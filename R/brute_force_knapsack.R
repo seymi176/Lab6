@@ -19,7 +19,7 @@ brute_force_knapsack <- function(x, W){
   finalWeight <- 0
   finalValue  <- 0
   element <- c()
-  sizeOfLoop <- (dim(x[1])[1])^2
+  sizeOfLoop <- 2^(dim(x[1])[1])
   
   while(i < sizeOfLoop){
     
