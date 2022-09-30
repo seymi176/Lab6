@@ -1,0 +1,19 @@
+---
+title: "Writing fast R code"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Writing fast R code}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(Lab6)
+```
