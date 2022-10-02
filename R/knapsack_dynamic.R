@@ -20,9 +20,26 @@ knapsack_dynamic <- function(x, W){
       } else{
         m[i+1, j+1] <- max(m[i, j+1], (x$v[i] + m[i, abs(j+1-x$w[i])]))
       }
-      
     }
   }
+
+#Looking for the selected elements in the sum
+  j <- j+1
+  i <- which.max(m[,j])
+  k <- 1
+  elements <- list()
+  elements[k] <- i-1
   
-  return(m[length(x$v)+1, W+1])
+  while (m[i,j]!=0 && j!=1 && i!=0) {
+    k <- k+1
+    j <- j-x$w[i-1]
+    i <- which(m[,j]==m[i-1])
+    elements[k] <- i-1
+  }
+  value<-round(m[length(x$v)+1,W+1])
+  elements<-sort(elements[which(elements>0)])
+  
+  values<-list(value=value,elements=elements)  
+  
+  return(values)
 }
