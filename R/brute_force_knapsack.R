@@ -10,9 +10,7 @@ knapsack_objects <- data.frame(w=sample(1:4000, size = n, replace = TRUE), v=run
 #'
 #' @return A data frame of two elements: maximum value and selected elements.
 #' @export brute_force_knapsack
-#'
-#' @examples 
-#' 
+
 brute_force_knapsack <- function(x, W){
 # Check input
   if (!is.data.frame(x)) {stop("x must be a data frame")}

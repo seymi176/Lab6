@@ -10,8 +10,7 @@ knapsack_objects <- data.frame(w=sample(1:4000, size = n, replace = TRUE), v=run
 #'
 #' @return Maximum value and selected elements.
 #' @export knapsack_dynamic
-#'
-#' @examples
+
 knapsack_dynamic <- function(x, W){
   if (!is.data.frame(x)) {stop("x must be a data frame")}
   if (any(x<0 , na.rm = TRUE)) {stop("x items must be positive")}
