@@ -5,7 +5,7 @@ knapsack_objects <- data.frame(w=sample(1:4000, size = n, replace = TRUE), v=run
 
 #' Knapsakh brute force search
 #'
-#' @param x A containing values and weights of items
+#' @param x A data frame containing values and weights of items
 #' @param W The knapsack's capacity
 #'
 #' @return A data frame of two elements: maximum value and selected elements.

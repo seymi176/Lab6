@@ -3,6 +3,16 @@ set.seed(42, kind = "Mersenne-Twister", normal.kind = "Inversion")
 n <- 2000
 knapsack_objects <- data.frame(w=sample(1:4000, size = n, replace = TRUE), v=runif(n = n, 0, 10000))
 
+
+#' Dynamic programming for knapsach probrem
+#'
+#' @param x A data frame containing values and weights of items
+#' @param W The knapsack's capacity
+#'
+#' @return Maximum value and selected elements.
+#' @export knapsack_dynamic
+#'
+#' @examples
 knapsack_dynamic <- function(x, W){
   if (!is.data.frame(x)) {stop("x must be a data frame")}
   if (any(x<0 , na.rm = TRUE)) {stop("x items must be positive")}
