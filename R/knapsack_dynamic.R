@@ -33,13 +33,11 @@ knapsack_dynamic <- function(x, W){
   while (m[i,j]!=0 && j!=1 && i!=0) {
     k <- k+1
     j <- j-x$w[i-1]
-    i <- which(m[,j]==m[i-1])
+    i <- which(m[,j]==m[i-1,j])[1]
     elements[k] <- i-1
   }
-  value<-round(m[length(x$v)+1,W+1])
-  elements<-sort(elements[which(elements>0)])
-  
-  values<-list(value=value,elements=elements)  
+
+  values<-list(value=round(m[length(x$v)+1,W+1]),elements=elements[elements>0])   
   
   return(values)
 }
