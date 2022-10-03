@@ -18,38 +18,108 @@ You can install the development version of Lab6 from
 devtools::install_github("seymi176/Lab6")
 ```
 
-## Example
+## 1. Brute force method
 
-This is a basic example which shows you how to solve a common problem:
+Implementation of brute_force method for solving the knapsack problem :
 
 ``` r
 library(Lab6)
-## basic example code
+data(knapsack_objects)
+brute_force_knapsack(x = knapsack_objects[1:8,], W = 3500)
+#> $value
+#> [1] 16770
+#> 
+#> $elements
+#> [1] 5 8
+brute_force_knapsack(x = knapsack_objects[1:12,], W = 3500)
+#> $value
+#> [1] 16770
+#> 
+#> $elements
+#> [1] 5 8
+brute_force_knapsack(x = knapsack_objects[1:8,], W = 2000)
+#> $value
+#> [1] 15428
+#> 
+#> $elements
+#> [1] 3 8
+brute_force_knapsack(x = knapsack_objects[1:12,], W = 2000)
+#> $value
+#> [1] 15428
+#> 
+#> $elements
+#> [1] 3 8
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+## 2. Dynamic programming
+
+Implementation of dynamic programming method for solving the knapsack
+problem :
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+data(knapsack_objects)
+knapsack_dynamic(x = knapsack_objects[1:8,], W = 3500)
+#> $value
+#> [1] 16770
+#> 
+#> $elements
+#> $elements[[1]]
+#> [1] 8
+#> 
+#> $elements[[2]]
+#> [1] 5
+knapsack_dynamic(x = knapsack_objects[1:12,], W = 3500)
+#> $value
+#> [1] 16770
+#> 
+#> $elements
+#> $elements[[1]]
+#> [1] 8
+#> 
+#> $elements[[2]]
+#> [1] 5
+knapsack_dynamic(x = knapsack_objects[1:8,], W = 2000)
+#> $value
+#> [1] 15428
+#> 
+#> $elements
+#> $elements[[1]]
+#> [1] 8
+#> 
+#> $elements[[2]]
+#> [1] 3
+knapsack_dynamic(x = knapsack_objects[1:12,], W = 2000)
+#> $value
+#> [1] 15428
+#> 
+#> $elements
+#> $elements[[1]]
+#> [1] 8
+#> 
+#> $elements[[2]]
+#> [1] 3
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+## 3. Greedy heuristic
 
-You can also embed plots, for example:
+Implementation of Greedy heuristic method for solving the knapsack
+problem :
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+``` r
+data(knapsack_objects)
+greedy_knapsack(x = knapsack_objects[1:800,], W = 3500)
+#> $value
+#> [1] 192647
+#> 
+#> $elements
+#>  [1]  92 574 472  80 110 537 332 117  37 776 577 288 234 255 500 794  55 290 436
+#> [20] 346 282 764 599 303 345 300 243  43 747  35  77 229 719 564
+greedy_knapsack(x = knapsack_objects[1:1200,], W = 2000)
+#> $value
+#> [1] 212337
+#> 
+#> $elements
+#>  [1]   92  574  472   80  110  840  537 1000  332  117   37 1197 1152  947  904
+#> [16]  776  577  288 1147 1131  234  255 1006  833 1176 1092  873  828 1059  500
+#> [31] 1090  794 1033
+```
