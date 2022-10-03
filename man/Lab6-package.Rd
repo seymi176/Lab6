@@ -4,7 +4,7 @@
 \name{Lab6-package}
 \alias{Lab6}
 \alias{Lab6-package}
-\title{Lab6: What the Package Does (One Line, Title Case)}
+\title{Lab6: Knapsack Problem}
 \description{
 What the package does (one paragraph).
 }

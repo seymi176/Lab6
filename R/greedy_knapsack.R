@@ -37,7 +37,7 @@ greedy_knapsack <- function(x, W) {
     i <- i + 1
   }
   
-  df <- list(tempWeight, round(tempValue), elementList)
-  names(df) <- c("weight", "value", "elements")
+  df <- list(round(tempValue), elementList)
+  names(df) <- c("value", "elements")
   return(df)
 }
