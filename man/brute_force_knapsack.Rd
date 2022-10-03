@@ -2,18 +2,20 @@
 % Please edit documentation in R/brute_force_knapsack.R
 \name{brute_force_knapsack}
 \alias{brute_force_knapsack}
-\title{Knapsakh brute force search}
+\title{Knapsack brute force search}
 \usage{
-brute_force_knapsack(x, W)
+brute_force_knapsack(x, W, parallel = FALSE)
 }
 \arguments{
 \item{x}{A data frame containing values and weights of items}
 
 \item{W}{The knapsack's capacity}
+
+\item{parallel}{Parallelize brute force search}
 }
 \value{
 A data frame of two elements: maximum value and selected elements.
 }
 \description{
-Knapsakh brute force search
+Knapsack brute force search
 }

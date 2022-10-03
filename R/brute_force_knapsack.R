@@ -7,6 +7,7 @@ knapsack_objects <- data.frame(w=sample(1:4000, size = n, replace = TRUE), v=run
 #'
 #' @param x A data frame containing values and weights of items
 #' @param W The knapsack's capacity
+#' @param parallel Parallelize brute force search
 #'
 #' @return A data frame of two elements: maximum value and selected elements.
 #' @export brute_force_knapsack
