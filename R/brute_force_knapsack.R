@@ -1,3 +1,4 @@
+# data("knapsack_objects")
 #' Brute force search in knapsack problem
 #' 
 #' @param x A dataframe containing the values (v) and the weights (w) of a number of items to put in the knapsack.
@@ -83,5 +84,5 @@ brute_force_knapsack<-function(x,W,parallel=FALSE){
   }
 }
 
-# brute_force_knapsack(x = knapsack_objects[1:20,], W = 3500,parallel=FALSE)
+# brute_force_knapsack(x = knapsack_objects[1:20,], W = 3500)
 # brute_force_knapsack(x = knapsack_objects[1:20,], W = 3500,parallel=TRUE)
