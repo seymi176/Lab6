@@ -2,7 +2,7 @@
 % Please edit documentation in R/greedy_knapsack.R
 \name{greedy_knapsack}
 \alias{greedy_knapsack}
-\title{Title}
+\title{Greedy Knapsack}
 \usage{
 greedy_knapsack(x, W)
 }
@@ -15,5 +15,5 @@ greedy_knapsack(x, W)
 Maximum value and selected elements.
 }
 \description{
-Title
+Greedy Knapsack
 }

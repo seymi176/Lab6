@@ -2,20 +2,26 @@
 % Please edit documentation in R/brute_force_knapsack.R
 \name{brute_force_knapsack}
 \alias{brute_force_knapsack}
-\title{Knapsack brute force search}
+\title{Brute force search in knapsack problem}
 \usage{
 brute_force_knapsack(x, W, parallel = FALSE)
 }
 \arguments{
-\item{x}{A data frame containing values and weights of items}
+\item{x}{A dataframe with two columns: the values (v) and the weights (w) of each item to put in the knapsack.}
 
-\item{W}{The knapsack's capacity}
+\item{W}{A positive number representing the knapsack size.}
 
-\item{parallel}{Parallelize brute force search}
+\item{parallel}{An optional logical variable (the default is FALSE). If is TRUE the function should parallelize over the detected cores.}
 }
 \value{
-A data frame of two elements: maximum value and selected elements.
+A list of two elements: a positive number with the maximum knapsack \code{value} and a vector of all the \code{elements} in the knapsack size.
 }
 \description{
-Knapsack brute force search
+Brute force search in knapsack problem
+}
+\examples{
+set.seed(42)
+n <- 2000
+knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),v=runif(n = n, 0, 10000))
+brute_force_knapsack(x = knapsack_objects[1:8,], W = 3500)
 }

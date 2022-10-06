@@ -1,4 +1,4 @@
-data(knapsack_objects)
+# data(knapsack_objects)
 
 #' Dynamic programming for knapsach probrem
 #'
