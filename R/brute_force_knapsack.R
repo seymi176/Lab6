@@ -1,9 +1,7 @@
-# data(knapsack_objects)
-#'
 #' Brute force search in knapsack problem
 #' 
-#' @param x A dataframe with two columns: the values (v) and the weights (w) of each item to put in the knapsack.
-#' @param W A positive number representing the knapsack size.
+#' @param x A dataframe containing the values (v) and the weights (w) of a number of items to put in the knapsack.
+#' @param W The knapsack size.
 #' @param parallel An optional logical variable (the default is FALSE). If is TRUE the function should parallelize over the detected cores.
 #' @return A list of two elements: a positive number with the maximum knapsack \code{value} and a vector of all the \code{elements} in the knapsack size.
 #' @examples
@@ -26,11 +24,8 @@ brute_force_knapsack<-function(x,W,parallel=FALSE){
   n<-dim(x)[1]
   elements<-length(n)
   
-  
   if(parallel==TRUE){
     cores <- parallel::detectCores()
-    cores <-2
-    
     cl <- parallel::makeCluster(cores, type = "PSOCK")
     
     parallel::clusterExport(cl, varlist=c("x","W","n","elements","maxvalue","value"), envir=environment())
@@ -88,5 +83,5 @@ brute_force_knapsack<-function(x,W,parallel=FALSE){
   }
 }
 
-#brute_force_knapsack(x = knapsack_objects[1:8,], W = 3500,parallel=FALSE)
-#brute_force_knapsack(x = knapsack_objects[1:8,], W = 3500,parallel=TRUE)
+# brute_force_knapsack(x = knapsack_objects[1:20,], W = 3500,parallel=FALSE)
+# brute_force_knapsack(x = knapsack_objects[1:20,], W = 3500,parallel=TRUE)
