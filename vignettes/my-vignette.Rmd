@@ -30,7 +30,7 @@ limited weight $W$ and we want to fill this knapsack with a number of items *i* 
 
 The brute_force_knapsack function searches through all possible options and returns the highest value discovered. It provides the right response, but its complexity is O(2^n) because all possible (2^n) possibilities must be considered.
 
-As shown below, it takes almost 0.36 seconds for the function *"brute_force_knapsack"* to find the solution for n = 16 objects.
+As shown below, it takes almost 1.5 seconds for the function *"brute_force_knapsack"* to find the solution for n = 16 objects.
 
 ```{r}
 library(Lab6)
