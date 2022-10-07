@@ -30,11 +30,18 @@ limited weight $W$ and we want to fill this knapsack with a number of items *i* 
 
 The brute_force_knapsack function searches through all possible options and returns the highest value discovered. It provides the right response, but its complexity is O(2^n) because all possible (2^n) possibilities must be considered.
 
-As shown below, it takes less than *10* seconds for the function *"brute_force_knapsack"* to find the solution for n = 22 objects.
+As shown below, it takes almost 0.36 seconds for the function *"brute_force_knapsack"* to find the solution for n = 16 objects.
 
-```{r setup}
+```{r}
 library(Lab6)
-system.time(brute_force_knapsack(x = knapsack_objects[1:22,], W = 2000), gcFirst = T)
+system.time(brute_force_knapsack(x = knapsack_objects[1:16,], W = 3500), gcFirst = T)
+```
+
+If parallel=TRUE:
+
+```{r }
+library(Lab6)
+system.time(brute_force_knapsack(x = knapsack_objects[1:16,], W = 3500, parallel=TRUE),gcFirst = T)
 ```
 
 
@@ -197,13 +204,13 @@ test_that("Function return correct results.", {
 })
 ```
 
+### 1.1.6 Profiling and optimizing the code
 
-### 1.1.8 Parallelize brute force search
+By implementing the parallel method for the brute force function, the elapsed time reduced from 0.36 second for non-paralleled method to only 0.02 second.   
 
-As shown below, it takes less time for the function, compared to the non-parallelized method.
+We also recognized that we have a time consuming process in for-loop, so by substituting lapply instead of for-loop we could reduce the elapsed time for the brute force function.   
 
-```{r }
-library(Lab6)
-system.time(brute_force_knapsack(x = knapsack_objects[1:22,], W = 2000, parallel=TRUE),gcFirst = T)
-```
+we also recognized that by substituting inToBits function (which generates lots of non-usable zeros) with the combn function in producing the combination we can speed up the process.
+
+
 
