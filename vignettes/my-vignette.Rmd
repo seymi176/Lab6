@@ -30,7 +30,7 @@ limited weight $W$ and we want to fill this knapsack with a number of items *i* 
 
 The brute_force_knapsack function searches through all possible options and returns the highest value discovered. It provides the right response, but its complexity is O(2^n) because all possible (2^n) possibilities must be considered.
 
-As shown below, it takes almost 1.5 seconds for the function *"brute_force_knapsack"* to find the solution for n = 16 objects.
+As shown below, for the function *"brute_force_knapsack"* for n = 16 objects, the elapsed time is 0.41 seconds, and the user time is 0.38 seconds.
 
 ```{r}
 library(Lab6)
@@ -43,12 +43,12 @@ If parallel=TRUE:
 library(Lab6)
 system.time(brute_force_knapsack(x = knapsack_objects[1:16,], W = 3500, parallel=TRUE),gcFirst = T)
 ```
-
+As it can be seen, the elapsed time in parallel mode is 1.41 seconds which is more than non-paralleled mode, however the user time is 0.03 which is lower than non-paralleled mode.
 
 ### 1.1.3 Dynamic programming
 The knapsack_dynamic is based on the fact that all weights are nonnegative integers and they are all less than $W$. In this approach it's defined a matrix where in each position m[i,w] is stored the maximum value that can be attained with weight less than or equal to w using items up to i. The maximum value is found calculating m[n,W]. It gives a correct answer to the problem in all the situation but its complexity is $O(Wn)$ less than the brute_force_knapsackfunction.
 
-As expected, the dynamic algorithm has better performance than previous one, and it takes around *10* seconds for the  *"knapsack_dynamic"* to find the solution for n = 500 objects.
+As expected, the dynamic algorithm has better performance than previous one, and it takes around *4.5* seconds for the  *"knapsack_dynamic"* to find the solution for n = 500 objects.
 
 ```{r}
 system.time(knapsack_dynamic(x = knapsack_objects[1:500,], W = 3500), gcFirst = T)
@@ -56,7 +56,7 @@ system.time(knapsack_dynamic(x = knapsack_objects[1:500,], W = 3500), gcFirst = 
 
 ### 1.1.4 Greedy heuristic
 
-In terms of calculation time, the greedy algorithm has the best performance among others. It takes around *1* second for the  *"greedy_knapsack"* to find the solution for n = 1000000 objects. First, we create a new knapsack object which contain 1000000 objects and then test performance of the algorithm.
+In terms of calculation time, the greedy algorithm has the best performance among others. It takes around *0.43* second for the  *"greedy_knapsack"* to find the solution for n = 1000000 objects. First, we create a new knapsack object which contain 1000000 objects and then test performance of the algorithm.
 
 ```{r}
 RNGversion(min(as.character(getRversion()),"3.5.3"))
@@ -206,9 +206,9 @@ test_that("Function return correct results.", {
 
 ### 1.1.6 Profiling and optimizing the code
 
-By implementing the parallel method for the brute force function, the elapsed time reduced from 0.36 second for non-paralleled method to only 0.02 second.   
+By implementing the parallel method for the brute force function, the user time reduced from 0.38 second for non-paralleled method to only 0.03 second.   
 
-We also recognized that we have a time consuming process in for-loop, so by substituting lapply instead of for-loop we could reduce the elapsed time for the brute force function.   
+We also recognized that we have a time consuming process in for-loop, so by implementing lapply function instead of for-loop function we could reduce the elapsed time for the brute force function.   
 
 we also recognized that by substituting inToBits function (which generates lots of non-usable zeros) with the combn function in producing the combination we can speed up the process.
 
